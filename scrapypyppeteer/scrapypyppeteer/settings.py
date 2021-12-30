@@ -18,7 +18,7 @@ NEWSPIDER_MODULE = 'scrapypyppeteer.spiders'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
-TWISTED_REACTOR = 'twisted.internet.asyncioreactor.AsyncioSelectorReactor'
+#TWISTED_REACTOR = 'twisted.internet.asyncioreactor.AsyncioSelectorReactor'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 CONCURRENT_REQUESTS = 3
@@ -51,8 +51,8 @@ CONCURRENT_REQUESTS = 3
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    'scrapypyppeteer.middlewares.PyppeteerMiddleware': 543,
-    #'scrapypyppeteer.middlewares.ScrapypyppeteerDownloaderMiddleware': 540,
+    #'scrapypyppeteer.middlewares.PyppeteerMiddleware': 543,
+    'gerapy_pyppeteer.downloadermiddlewares.PyppeteerMiddleware': 540 
 }
 
 # Enable or disable extensions

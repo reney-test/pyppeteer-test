@@ -2,6 +2,7 @@ import logging
 import re
 
 from gerapy_pyppeteer import PyppeteerRequest
+import gerapy_pyppeteer
 from scrapy import Request, Spider
 
 from scrapypyppeteer.items import BookItem
