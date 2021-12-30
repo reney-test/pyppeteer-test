@@ -3,7 +3,7 @@ from pyppeteer import launch
 from pyquery import PyQuery as pq
 
 async def main():
-    browser = await launch()
+    browser = await launch(headerless=False)
     page = await browser.newPage()
     await page.goto('http://quotes.toscrape.com/js/')
     doc = pq(await page.content())
