@@ -12,16 +12,16 @@ BOT_NAME = 'scrapypyppeteer'
 SPIDER_MODULES = ['scrapypyppeteer.spiders']
 NEWSPIDER_MODULE = 'scrapypyppeteer.spiders'
 
-TWISTED_REACTOR = 'twisted.internet.asyncioreactor.AsyncioSelectorReactor'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrapypyppeteer (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
+TWISTED_REACTOR = 'twisted.internet.asyncioreactor.AsyncioSelectorReactor'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 CONCURRENT_REQUESTS = 3
-
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
@@ -52,6 +52,7 @@ CONCURRENT_REQUESTS = 3
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'scrapypyppeteer.middlewares.PyppeteerMiddleware': 543,
+    #'scrapypyppeteer.middlewares.ScrapypyppeteerDownloaderMiddleware': 540,
 }
 
 # Enable or disable extensions
