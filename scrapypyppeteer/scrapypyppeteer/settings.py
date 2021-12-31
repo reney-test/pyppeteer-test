@@ -52,7 +52,7 @@ CONCURRENT_REQUESTS = 3
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     #'scrapypyppeteer.middlewares.PyppeteerMiddleware': 543,
-    'gerapy_pyppeteer.downloadermiddlewares.PyppeteerMiddleware': 540 
+    'gerapy_playwright.downloadermiddlewares.PlaywrightMiddleware': 540 
 }
 
 # Enable or disable extensions

@@ -1,8 +1,8 @@
 import logging
 import re
 
-from gerapy_pyppeteer import PyppeteerRequest
-import gerapy_pyppeteer
+from gerapy_playwright import PlaywrightRequest
+
 from scrapy import Request, Spider
 
 from scrapypyppeteer.items import BookItem
@@ -17,7 +17,7 @@ class BookSpider(Spider):
     def start_requests(self):
         start_url = f'{self.base_urls}/page/1'
         logger.info('crawling %s', start_url)
-        yield PyppeteerRequest(start_url, callback=self.parse_index, wait_for='.item .name')
+        yield PlaywrightRequest(start_url, callback=self.parse_index, wait_for='.item .name')
 
     def parse_index(self, response):
         """
@@ -31,13 +31,13 @@ class BookSpider(Spider):
             detail_url = response.urljoin(href)
             #叶的优先级高于枝干，保证新枝干开始时，旧的枝叶已处理完
             #yield Request(detail_url, callback=self.parse_detail, priority=2)
-            yield PyppeteerRequest(detail_url, callback=self.parse_detail, priority=2, wait_for='.item .name')
+            yield PlaywrightRequest(detail_url, callback=self.parse_detail, priority=2, wait_for='.item .name')
 
         match = re.search(r'page/(\d+)', response.url)
         if not match: return
         page = int(match.group(1)) + 1
         next_url = f'{self.base_urls}/page/{page}'
-        yield PyppeteerRequest(next_url, callback=self.parse_index, wait_for='.item .name')
+        yield PlaywrightRequest(next_url, callback=self.parse_index, wait_for='.item .name')
 
     def parse_detail(self, response):
         name = response.css('.name::text').get()
